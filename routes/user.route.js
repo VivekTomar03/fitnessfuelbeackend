@@ -56,7 +56,7 @@ userRouter.post("/register", userValidator, async (req, res) => {
 userRouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
-    const data = await UserModel.findOne({ email });
+    const data = await UserModel.findOne({ email ,password});
     if (data) {
       const token = jwt.sign(
         { userID: data._id, owner: data.name },
